@@ -9,7 +9,8 @@
     "airbnb-typescript",
     "react-app",
     "react-app/jest",
-    "plugin:import/typescript"
+    "plugin:import/typescript",
+    "plugin:prettier/recommended"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -20,7 +21,7 @@
     "sourceType": "module",
     "project": "./tsconfig.json"
   },
-  "plugins": ["react", "@typescript-eslint"],
+  "plugins": ["react", "@typescript-eslint", "prettier"],
   "rules": {
     "semi": ["warn", "always"],
     "quotes": [
