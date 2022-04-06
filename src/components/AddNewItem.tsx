@@ -1,16 +1,25 @@
 import { useState } from 'react';
 import { AddItemButton } from '../styles/styles';
+import NewItemForm from './NewItemForm';
 
 interface AddNewItemProps {
   toggleButtonText: string;
+  onAdd(text: string): void;
   dark: boolean;
 }
 
-function AddNewItem({ toggleButtonText, dark }: AddNewItemProps) {
+function AddNewItem({ toggleButtonText, dark, onAdd }: AddNewItemProps) {
   const [showForm, setShowForm] = useState(false);
 
   if (showForm) {
-    return <div>Hello</div>;
+    return (
+      <NewItemForm
+        onAdd={(text) => {
+          onAdd(text);
+          setShowForm(false);
+        }}
+      />
+    );
   }
 
   return (
