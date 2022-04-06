@@ -1,6 +1,7 @@
 {
   "hosting": {
     "public": "build",
+    "site": "trello-app-react-typescript",
     "ignore": [
       "firebase.json",
       "**/.*",
