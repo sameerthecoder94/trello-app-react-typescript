@@ -1,19 +1,14 @@
 import { AppContainer } from './styles/styles';
 import Column from './components/Column';
-import Card from './components/Card';
+import { useAppState } from './context/AppStateContext';
 
 function App() {
+  const { state } = useAppState();
   return (
     <AppContainer>
-      <Column text="To Do">
-        <Card text="Make TypeScript Project" />
-      </Column>
-      <Column text="In Progress">
-        <Card text="Make TypeScript Project" />
-      </Column>
-      <Column text="Completed!">
-        <Card text="Make TypeScript Project" />
-      </Column>
+      {state.lists.map((list, i) => (
+        <Column text={list.text} key={list.id} index={i} />
+      ))}
     </AppContainer>
   );
 }

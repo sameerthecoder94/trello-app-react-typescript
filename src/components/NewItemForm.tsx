@@ -12,6 +12,7 @@ interface NewItemFormProps {
 
 function NewItemForm({ onAdd }: NewItemFormProps) {
   const [text, setText] = useState('');
+
   const inputRef = useFocus();
   return (
     <NewItemFormContainer>
