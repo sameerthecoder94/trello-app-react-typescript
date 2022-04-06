@@ -1,7 +1,8 @@
-import { createContext, useContext } from 'react';
+import { createContext, useContext, useReducer } from 'react';
 
 interface AppStateContextProps {
   state: AppState;
+  dispatch: React.Dispatch<any>;
 }
 
 export const AppStateContext = createContext<AppStateContextProps>(
@@ -22,6 +23,26 @@ interface List {
 export interface AppState {
   lists: List[];
 }
+
+type Action =
+  | { type: 'ADD_LIST'; payload: string }
+  | { type: 'ADD_TASK'; payload: { text: string; taskId: string } };
+
+const appStateReducer = (state: AppState, action: Action) => {
+  switch (action.type) {
+    case 'ADD_LIST': {
+      return { ...state };
+    }
+    case 'ADD_TASK': {
+      return {
+        ...state
+      };
+    }
+    default: {
+      return { ...state };
+    }
+  }
+};
 
 const appData: AppState = {
   lists: [
@@ -44,9 +65,10 @@ const appData: AppState = {
 };
 
 function AppStateProvider({ children }: React.PropsWithChildren<{}>) {
+  const [state, dispatch] = useReducer(appStateReducer, appData);
   return (
     // eslint-disable-next-line react/jsx-no-constructed-context-values
-    <AppStateContext.Provider value={{ state: appData }}>
+    <AppStateContext.Provider value={{ state, dispatch }}>
       {children}
     </AppStateContext.Provider>
   );
