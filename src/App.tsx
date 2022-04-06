@@ -1,8 +1,10 @@
+import { AppContainer } from './styles/styles';
+
 function App() {
   return (
-    <div>
+    <AppContainer>
       <h1>Trello App with ReactTypeScript</h1>
-    </div>
+    </AppContainer>
   );
 }
 
